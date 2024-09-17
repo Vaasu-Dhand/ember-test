@@ -1,0 +1,13 @@
+<li class="list-group-item d-flex justify-content-between align-items-start">
+  <div class="ms-2 me-auto">
+    <div class="fw-bold">{{@httpMethod}}</div>
+    <p class="text-monospace">
+      {{@endpoint}}
+
+    </p>
+  </div>
+  <button type="button" class="btn btn-dark" {{on "click" (fn this.handleClick @endpoint)}}>Request</button>
+</li>
+<div>
+  {{this.response}}
+</div>
