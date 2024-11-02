@@ -8,12 +8,12 @@ export default class Endpoint extends Component {
     this.endpoint = '';
   }
 
-  @action
-  async handleClick(endpoint) {
-    console.log(endpoint);
-    const URL = `https://jsonplaceholder.typicode.com${endpoint}`;
-    console.log(URL);
-    const data = await fetch(URL).then((res) => res.json());
-    console.log(data);
-  }
+  // @action
+  // async handleClick(endpoint) {
+  //   console.log(endpoint);
+  //   const URL = `https://jsonplaceholder.typicode.com${endpoint}`;
+  //   console.log(URL);
+  //   const data = await fetch(URL).then((res) => res.json());
+  //   console.log(data);
+  // }
 }

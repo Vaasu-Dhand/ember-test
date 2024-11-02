@@ -1,18 +1,32 @@
-<h2 class="pt-3 text-center">JSON Server 🐹</h2>
+<h2 class="pt-3 text-center">Ember + JSON Server 🐹</h2>
 <div class="d-flex justify-content-between gap-4">
   <div class="w-50 pt-5">
     <ul class="list-group list-group-numbered">
-      <Endpoint @httpMethod="GET" @endpoint="/posts" />
-      <Endpoint @httpMethod="GET" @endpoint="/posts/1" />
-      <Endpoint @httpMethod="GET" @endpoint="/posts/1/comments" />
-      <Endpoint @httpMethod="GET" @endpoint="/comments?postId=1" />
+      <Endpoint
+        @httpMethod="GET"
+        @endpoint="/posts"
+        @onClick={{fn this.handleOnClick "/posts"}}
+      />
+      <Endpoint
+        @httpMethod="GET"
+        @endpoint="/posts/1"
+        @onClick={{fn this.handleOnClick "/posts/1"}}
+      />
+      <Endpoint
+        @httpMethod="GET"
+        @endpoint="/posts/1/comments"
+        @onClick={{fn this.handleOnClick "/posts/1/comments"}}
+      />
+      <Endpoint
+        @httpMethod="GET"
+        @endpoint="/comments?postId=1"
+        @onClick={{fn this.handleOnClick "/comments?postId=1"}}
+      />
     </ul>
   </div>
   <div class="w-50 pt-5">
-    <textarea
-      class="form-control"
-      id="response-textarea"
-      rows="20"
-    >{{this.myData}}</textarea>
+    {{#each this.posts as |post|}}
+      <PostCard @post={{post}} />
+    {{/each}}
   </div>
 </div>

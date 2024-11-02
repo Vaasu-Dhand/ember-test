@@ -3,10 +3,13 @@
     <div class="fw-bold">{{@httpMethod}}</div>
     <p class="text-monospace">
       {{@endpoint}}
-
     </p>
   </div>
-  <button type="button" class="btn btn-dark" {{on "click" (fn this.handleClick @endpoint)}}>Request</button>
+  <button
+    type="button"
+    class="btn btn-dark"
+    {{on "click" @onClick}}
+  >Request</button>
 </li>
 <div>
   {{this.response}}
