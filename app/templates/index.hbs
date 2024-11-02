@@ -1,9 +1,18 @@
 <h2 class="pt-3 text-center">JSON Server 🐹</h2>
-<div class="w-50 pt-5">
-  <ul class="list-group list-group-numbered">
-    <Endpoint @httpMethod="GET" @endpoint="/posts" />
-    <Endpoint @httpMethod="GET" @endpoint="/posts/1" />
-    <Endpoint @httpMethod="GET" @endpoint="/posts/1/comments" />
-    <Endpoint @httpMethod="GET" @endpoint="/comments?postId=1" />
-  </ul>
+<div class="d-flex justify-content-between gap-4">
+  <div class="w-50 pt-5">
+    <ul class="list-group list-group-numbered">
+      <Endpoint @httpMethod="GET" @endpoint="/posts" />
+      <Endpoint @httpMethod="GET" @endpoint="/posts/1" />
+      <Endpoint @httpMethod="GET" @endpoint="/posts/1/comments" />
+      <Endpoint @httpMethod="GET" @endpoint="/comments?postId=1" />
+    </ul>
+  </div>
+  <div class="w-50 pt-5">
+    <textarea
+      class="form-control"
+      id="response-textarea"
+      rows="20"
+    >{{this.myData}}</textarea>
+  </div>
 </div>
