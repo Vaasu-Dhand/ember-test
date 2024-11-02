@@ -24,6 +24,7 @@
       />
     </ul>
   </div>
+  {{log this.posts}}
   <div class="w-50 pt-5">
     {{#each this.posts as |post|}}
       <PostCard @post={{post}} />

@@ -17,7 +17,7 @@ export default class IndexController extends Controller {
     console.log('endpoint', endpoint);
     switch (endpoint) {
       case '/posts':
-        this.posts = await this.store.findAll('posts');
+        this.posts = await this.store.findAll('post');
         console.log(this.posts);
 
         break;
