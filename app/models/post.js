@@ -1,5 +1,5 @@
 import Model from '@ember-data/model';
-import { attr } from '@ember-data/model';
+import { attr, hasMany } from '@ember-data/model';
 
 export default class PostModel extends Model {
   @attr('number') userId;

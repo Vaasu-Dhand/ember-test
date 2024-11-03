@@ -3,7 +3,14 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
+/**
+ * @typedef {import('@ember-data/store').default} Store
+ */
+
 export default class IndexController extends Controller {
+  /**
+   * @type {Store}
+   */
   @service store;
   @service loader;
   @tracked posts = [];
@@ -35,7 +42,12 @@ export default class IndexController extends Controller {
           this.posts = await this.store.findAll('post');
           break;
         case '/posts/1':
-          this.posts = await this.store.findRecord('post', resourceId);
+          this.posts = [await this.store.findRecord('post', resourceId)];
+          break;
+        case '/posts/1/comments':
+          this.comments = await this.store.query('comment', {
+            postId: resourceId,
+          });
           break;
         default:
           return;
