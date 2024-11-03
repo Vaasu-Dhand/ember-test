@@ -3,9 +3,13 @@ import RESTSerializer from '@ember-data/serializer/rest';
 
 export default class ApplicationSerializer extends RESTSerializer {
   normalizeResponse(store, primaryModelClass, payload, id, requestType) {
-    // If the payload is an array, wrap it in an object with the model name as key
-    if (Array.isArray(payload)) {
-      const modelName = primaryModelClass.modelName;
+    const modelName = primaryModelClass.modelName;
+
+    if (requestType === 'findRecord' && !Array.isArray(payload)) {
+      // Wrap the single object response in an object with the model name as the key
+      payload = { [modelName]: payload };
+    } else if (Array.isArray(payload)) {
+      // For array responses, wrap in the model name for consistency
       payload = { [modelName]: payload };
     }
 
@@ -18,7 +22,6 @@ export default class ApplicationSerializer extends RESTSerializer {
     );
   }
 
-  // This helps match camelCase properties in Ember with snake_case from API
   keyForAttribute(key) {
     return key;
   }

@@ -34,6 +34,11 @@
         <BsSpinner @type="dark" size="lg" />
       </div>
     {{/if}}
+    {{#if this.error}}
+      <div class="alert alert-danger" role="alert">
+        {{this.error}}
+      </div>
+    {{/if}}
     {{#each this.posts as |post|}}
       <PostCard @post={{post}} @isLoading={{this.isLoading}} />
     {{/each}}
