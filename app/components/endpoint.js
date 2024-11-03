@@ -1,19 +1,38 @@
 import Component from '@glimmer/component';
+import { Changeset } from 'ember-changeset';
+import lookupValidator from 'ember-changeset-validations';
+import NumberValidations from '../validations/number';
 import { action } from '@ember/object';
-import fetch from 'fetch';
 
 export default class Endpoint extends Component {
   constructor(...args) {
     super(...args);
     this.endpoint = '';
+    this.changeset = new Changeset(
+      { value: 1 }, // Default value
+      lookupValidator(NumberValidations),
+      NumberValidations,
+    );
   }
 
-  // @action
-  // async handleClick(endpoint) {
-  //   console.log(endpoint);
-  //   const URL = `https://jsonplaceholder.typicode.com${endpoint}`;
-  //   console.log(URL);
-  //   const data = await fetch(URL).then((res) => res.json());
-  //   console.log(data);
-  // }
+  get parsedEndpoint() {
+    const value =
+      this.changeset.value > 0 && this.changeset.value <= 50
+        ? this.changeset.value
+        : '((error))';
+    return this.args.endpoint.replace(/\/\d+/, `/${value}`);
+  }
+
+  get hasError() {
+    return !!this.changeset.error.value?.validation;
+  }
+
+  get isLoading() {
+    return false;
+  }
+
+  @action updateValue(_value) {
+    this.changeset.set('value', _value);
+    this.changeset.validate('value'); // Validate as user types
+  }
 }

@@ -6,28 +6,36 @@
         @httpMethod="GET"
         @endpoint="/posts"
         @onClick={{fn this.handleOnClick "/posts"}}
+        @hasNumberSelector={{false}}
       />
       <Endpoint
         @httpMethod="GET"
         @endpoint="/posts/1"
         @onClick={{fn this.handleOnClick "/posts/1"}}
+        @hasNumberSelector={{true}}
       />
       <Endpoint
         @httpMethod="GET"
         @endpoint="/posts/1/comments"
         @onClick={{fn this.handleOnClick "/posts/1/comments"}}
+        @hasNumberSelector={{true}}
       />
       <Endpoint
         @httpMethod="GET"
         @endpoint="/comments?postId=1"
         @onClick={{fn this.handleOnClick "/comments?postId=1"}}
+        @hasNumberSelector={{true}}
       />
     </ul>
   </div>
-  {{log this.posts}}
   <div class="w-50 pt-5">
+    {{#if this.loader.isLoading}}
+      <div class="text-center">
+        <BsSpinner @type="dark" size="lg" />
+      </div>
+    {{/if}}
     {{#each this.posts as |post|}}
-      <PostCard @post={{post}} />
+      <PostCard @post={{post}} @isLoading={{this.isLoading}} />
     {{/each}}
   </div>
 </div>

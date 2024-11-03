@@ -1,16 +1,35 @@
-<li class="list-group-item d-flex justify-content-between align-items-start">
+<li class="list-group-item d-flex justify-content-between align-items-center">
   <div class="ms-2 me-auto">
     <div class="fw-bold">{{@httpMethod}}</div>
-    <p class="text-monospace">
-      {{@endpoint}}
+    <p class="text-monospace {{if this.hasError 'text-danger'}}">
+      {{this.parsedEndpoint}}
     </p>
   </div>
+
+  {{! Number Input }}
+  {{#if @hasNumberSelector}}
+    <BsForm @formLayout="inline" @model={{this.changeset}} as |form|>
+      <form.element
+        class="w-50"
+        @controlType="number"
+        @label=""
+        @property="value"
+        @onInput={{this.updateValue}}
+        as |el|
+      >
+        <el.control
+          class={{if this.hasError "text-danger border-danger"}}
+          required
+        />
+      </form.element>
+    </BsForm>
+  {{/if}}
+
+  {{! Request Button }}
   <button
     type="button"
+    disabled={{this.hasError}}
     class="btn btn-dark"
-    {{on "click" @onClick}}
+    {{on "click" (fn @onClick this.changeset.value)}}
   >Request</button>
 </li>
-<div>
-  {{this.response}}
-</div>
