@@ -1,10 +1,22 @@
 <BsDropdown as |dd|>
-  <dd.toggle>Dropdown <span class="caret"></span></dd.toggle>
+  <dd.button class="btn btn-dark">{{this.user.name}}
+  </dd.button>
   <dd.menu as |ddm|>
     {{#each @users as |user|}}
       <ddm.item>
-        <h6>{{user.name}}</h6>
-        {{! TODO: Add Avatar Image }}
+        <button
+          type="button"
+          class="dropdown-item
+            {{if (eq this.user.name user.name) 'bg-dark text-white fw-bold'}}"
+          {{on "click" (fn this.onChange user)}}
+        >
+          <img
+            alt="avatar"
+            src={{this.getSrc user.id}}
+            class="bg-info rounded-circle w-25"
+          />
+          <span class="active text-truncate d-inline-block">{{user.name}}</span>
+        </button>
       </ddm.item>
     {{/each}}
   </dd.menu>

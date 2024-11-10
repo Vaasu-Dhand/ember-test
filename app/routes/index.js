@@ -1,7 +1,10 @@
 import Route from '@ember/routing/route';
+import { service } from '@ember/service';
 
 export default class IndexRoute extends Route {
-  async model() {
-    return 'This data is automatically loaded into the route';
+  @service router;
+
+  beforeModel(/* transition */) {
+    this.router.transitionTo('post'); // Implicitly aborts the on-going transition.
   }
 }
