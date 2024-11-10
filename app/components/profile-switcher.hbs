@@ -1,0 +1,11 @@
+<BsDropdown as |dd|>
+  <dd.toggle>Dropdown <span class="caret"></span></dd.toggle>
+  <dd.menu as |ddm|>
+    {{#each @users as |user|}}
+      <ddm.item>
+        <h6>{{user.name}}</h6>
+        {{! TODO: Add Avatar Image }}
+      </ddm.item>
+    {{/each}}
+  </dd.menu>
+</BsDropdown>
