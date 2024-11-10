@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import getAvatarUrl from '../utils/get-avatar-url';
 
 export default class ProfileSwitcher extends Component {
   @tracked user;
@@ -20,10 +19,5 @@ export default class ProfileSwitcher extends Component {
   onChange(user) {
     this.user = user;
     localStorage.setItem('user', JSON.stringify(user.serialize()));
-  }
-
-  @action
-  getSrc(userId) {
-    return getAvatarUrl(Number(userId));
   }
 }

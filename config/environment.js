@@ -6,6 +6,9 @@ module.exports = function (environment) {
     environment,
     rootURL: '/',
     locationType: 'history',
+    fontawesome: {
+      defaultPrefix: 'fal', // light icons
+    },
     EmberENV: {
       EXTEND_PROTOTYPES: false,
       FEATURES: {

@@ -3,3 +3,12 @@
   font-family: SUSE, sans-serif;
 }
 
+.float-right {
+  float: right;
+}
+
+.icon {
+  height: 25px !important;
+  width: 25px !important;
+  margin: 5px;
+}

@@ -1,6 +1,7 @@
-export default function getAvatarUrl(userId) {
-  if (typeof userId !== 'number') throw Error('`userId` should be a number');
+import { helper } from '@ember/component/helper';
 
+export default helper(function getAvatarUrl(positional /*, named*/) {
+  const userId = positional;
   // https://vinicius73.github.io/gravatar-url-generator/#/robohash
   const avatarsMap = [
     'https://robohash.org/2775ebcad9c9807b28f70d1551bb1b43?set=set4&bgset=&size=200x200',
@@ -15,5 +16,5 @@ export default function getAvatarUrl(userId) {
     'https://robohash.org/759858605f2629518f7525e6daf3530d?set=set4&bgset=&size=200x200',
     'https://robohash.org/8f0b4486a57dbb3ffa30b3b864b3ab1b?set=set4&bgset=&size=200x200',
   ];
-  return avatarsMap[userId];
-}
+  return avatarsMap[Number(userId)];
+});

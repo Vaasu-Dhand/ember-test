@@ -58,6 +58,7 @@
     "ember-qunit": "^8.1.0",
     "ember-resolver": "^11.0.1",
     "ember-source": "~5.11.0",
+    "ember-svg-jar": "^2.6.0",
     "ember-template-lint": "^5.13.0",
     "ember-truth-helpers": "^4.0.3",
     "ember-welcome-page": "^7.0.2",
@@ -84,5 +85,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "heroicons": "^2.1.5"
   }
 }
