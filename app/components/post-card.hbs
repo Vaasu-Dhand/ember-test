@@ -14,8 +14,11 @@
     {{! Comments & Delete buttons }}
     <BsButtonGroup class="w-100 btn-group" as |bg|>
       <bg.button class="btn-light">
-        {{svg-jar "chat-bubble-bottom-center-text" class="icon"}}
-        Comment</bg.button>
+        <LinkTo @route="post.comment" @model={{@post}} class="text-dark text-decoration-none">
+          {{svg-jar "chat-bubble-bottom-center-text" class="icon"}}
+          Comment
+        </LinkTo>
+      </bg.button>
       <bg.button class="btn-danger" {{on "click" (fn @onDelete @post)}}>
         {{svg-jar "trash" class="icon"}}
         Delete</bg.button>

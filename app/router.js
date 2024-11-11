@@ -8,5 +8,7 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('api');
-  this.route('post', { path: '/posts' });
+  this.route('post', { path: '/posts' }, function () {
+    this.route('comment', { path: '/comments/:comment_id' });
+  });
 });

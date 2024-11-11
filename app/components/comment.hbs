@@ -1,0 +1,14 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <img
+      alt="avatar"
+      src={{get-avatar-url @id}}
+      class="bg-info rounded-circle w-25"
+    />
+    <div class="d-flex gap-2">
+      <h5 class="card-title">{{@name}}</h5>
+      <p class="card-text">({{@email}})</p>
+    </div>
+    <small class="text-muted">{{@body}}</small>
+  </div>
+</div>

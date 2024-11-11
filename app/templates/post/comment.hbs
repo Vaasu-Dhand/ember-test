@@ -1,0 +1,14 @@
+{{page-title "Comments"}}
+<div class="col">
+  Herre
+  {{log this.model}}
+  {{#each this.model as |comment|}}
+    <Comment
+      @id={{comment.id}}
+      @name={{comment.name}}
+      @email={{comment.email}}
+      @body={{comment.body}}
+    />
+  {{/each}}
+</div>
+{{outlet}}

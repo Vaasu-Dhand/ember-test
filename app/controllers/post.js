@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 
 export default class PostController extends Controller {
   @service flashMessages;
+  @service router;
 
   @action
   async deletePost(post) {
@@ -15,5 +16,9 @@ export default class PostController extends Controller {
       console.error('Error deleting post:', error);
       this.flashMessages.danger(`Error deleting Post:${post.id}`);
     }
+  }
+
+  get activeRoute() {
+    return this.router.currentRouteName;
   }
 }
