@@ -4,9 +4,10 @@ import { inject as service } from '@ember/service';
 export default class PostCommentRoute extends Route {
   @service store;
 
-  async model(params) {
-    console.log('model params', params);
+  model(params) {
+    const postId = params.post_id;
 
-    return this.store.findAll('comment');
+    console.log('Fetching posts for', postId);
+    return this.store.query('comment', { postId });
   }
 }

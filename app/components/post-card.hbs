@@ -14,7 +14,7 @@
     {{! Comments & Delete buttons }}
     <BsButtonGroup class="w-100 btn-group" as |bg|>
       <bg.button class="btn-light">
-        <LinkTo @route="post.comment" @model={{@post}} class="text-dark text-decoration-none">
+        <LinkTo @route="post.comment" @model={{@post.id}} class="text-dark text-decoration-none">
           {{svg-jar "chat-bubble-bottom-center-text" class="icon"}}
           Comment
         </LinkTo>

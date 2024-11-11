@@ -1,11 +1,8 @@
 {{page-title "Comments"}}
-<div class="col">
-  Herre
-  {{log this.model}}
+<div class="col-4">
   {{#each this.model as |comment|}}
     <Comment
-      @id={{comment.id}}
-      @name={{comment.name}}
+      @name={{first-word comment.name}}
       @email={{comment.email}}
       @body={{comment.body}}
     />
