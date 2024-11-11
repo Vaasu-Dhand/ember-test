@@ -1,5 +1,10 @@
 {{page-title "Ember Media | Posts"}}
+  <div class="flash-messages-container">
+    {{#each this.flashMessages.queue as |flash|}}
+      <FlashMessage @flash={{flash}} />
+    {{/each}}
+  </div>
 {{#each this.model as |post|}}
-  <PostCard @post={{post}} />
+  <PostCard @post={{post}} @onDelete={{this.deletePost}} />
 {{/each}}
 {{outlet}}

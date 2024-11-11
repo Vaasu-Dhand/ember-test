@@ -8,6 +8,10 @@ module.exports = function (defaults) {
       bootstrapVersion: 5,
       importBootstrapCSS: true,
     },
+    flashMessageDefaults: {
+      extendedTimeout: 500,
+    },
+
     svgJar: {
       sourceDirs: [
         'node_modules/heroicons/24/outline',

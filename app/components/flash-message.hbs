@@ -1,0 +1,12 @@
+
+<div
+  class="flash-message {{@flash.type}} {{if @flash.exiting 'exiting'}}"
+  role="alert"
+>
+  <div class="flash-message-content">
+    {{@flash.message}}
+  </div>
+  <button type="button" class="close-button" {{on "click" this.close}}>
+    &times;
+  </button>
+</div>

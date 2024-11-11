@@ -16,7 +16,7 @@
       <bg.button class="btn-light">
         {{svg-jar "chat-bubble-bottom-center-text" class="icon"}}
         Comment</bg.button>
-      <bg.button class="btn-danger">
+      <bg.button class="btn-danger" {{on "click" (fn @onDelete @post)}}>
         {{svg-jar "trash" class="icon"}}
         Delete</bg.button>
     </BsButtonGroup>
